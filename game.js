@@ -495,8 +495,8 @@ function update(dt) {
         score += a.points;
         explode(a.x, a.y, a.size * 5);
         newAsteroids.push(...a.split());
-        // 15% de probabilidad de soltar un power-up Velocidad
-        if (Math.random() < 0.15)
+        // Las estrellas fugaces siempre sueltan un power-up Velocidad; el resto, 15%
+        if (a.type === 'fugaz' || Math.random() < 0.15)
           powerups.push(new PowerUp(a.x, a.y));
       }
     }
