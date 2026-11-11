@@ -139,6 +139,7 @@ class ShootingStar extends Asteroid {
     this.vx = Math.cos(angle) * speed;
     this.vy = Math.sin(angle) * speed;
     this.rotSpeed = 0;   // no gira: mantiene la estela alineada con su rumbo
+    this.radius = 14;    // hitbox acorde al dibujo escalado
   }
 
   split() {
@@ -162,26 +163,26 @@ class ShootingStar extends Asteroid {
     ctx.lineCap = 'round';
     ctx.beginPath();
     ctx.moveTo(this.x, this.y);
-    ctx.lineTo(this.x - this.vx * 0.14, this.y - this.vy * 0.14);
+    ctx.lineTo(this.x - this.vx * 0.18, this.y - this.vy * 0.18);
     ctx.strokeStyle = `rgba(120, 200, 255, ${(0.55 * fade).toFixed(2)})`;
-    ctx.lineWidth = 2.5;
+    ctx.lineWidth = 4.5;
     ctx.stroke();
     ctx.beginPath();
     ctx.moveTo(this.x, this.y);
-    ctx.lineTo(this.x - this.vx * 0.07, this.y - this.vy * 0.07);
+    ctx.lineTo(this.x - this.vx * 0.09, this.y - this.vy * 0.09);
     ctx.strokeStyle = `rgba(255, 255, 255, ${(0.9 * fade).toFixed(2)})`;
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 3;
     ctx.stroke();
 
     // Halo azulado + núcleo brillante
     ctx.strokeStyle = `rgba(120, 200, 255, ${(0.8 * fade).toFixed(2)})`;
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, 6, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, 13, 0, Math.PI * 2);
     ctx.stroke();
     ctx.fillStyle = `rgba(255, 255, 255, ${fade.toFixed(2)})`;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, 8, 0, Math.PI * 2);
     ctx.fill();
 
     ctx.restore();
